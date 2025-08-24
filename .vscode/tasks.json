@@ -1,0 +1,30 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "cppbuild",
+      "type": "shell",
+      "command": "clang++ -g ${fileBasename} -std=c++20 -o ${workspaceFolder}/out/${fileBasenameNoExtension}",
+      "options": {
+        "cwd": "${fileDirname}"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "clean",
+      "type": "shell",
+      "command": "rm ${cwd}/out/*",
+      "problemMatcher": []
+    },
+    {
+      "label": "cpp_build",
+      "type": "shell",
+      "command": "g++ -g ${fileBasename} -o ${workspaceFolder}/out/${fileBasenameNoExtension}",
+      "group": "build",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": []
+    }
+  ]
+}

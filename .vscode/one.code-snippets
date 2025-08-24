@@ -1,0 +1,53 @@
+{
+  "leetcode-print-three-dim": {
+    "prefix": "lc-p3",
+    "description": "",
+    "body": [
+      "vector<vector<vector<${0:int}>>> vvv = {{{${1}}}};",
+      "for (auto &vv : vvv) {",
+      "  for (auto &v : vv) {",
+      "    ranges::copy(v, ostream_iterator<${0:int}>(cout, \" \"));",
+      "    cout << \"\\n\";",
+      "  }",
+      "  cout << \"\\n\";",
+      "}"
+    ]
+  },
+  "leetcode-print-two-dim": {
+    "prefix": "lc-p2",
+    "description": "",
+    "body": [
+      "vector<vector<${0:int}>> vv = {{${1}},{}};",
+      "for (auto &v : vv) {",
+      "  ranges::copy(v, ostream_iterator<${0:int}>(cout, \" \"));",
+      "  cout << \"\\n\";",
+      "}"
+    ]
+  },
+  "leetcode-print-one-dim": {
+    "prefix": "lc-p1",
+    "description": "",
+    "body": [
+      "vector<${0:int}> v = {${1}};",
+      "ranges::copy(v, ostream_iterator<${0:int}>(cout, \" \"));"
+    ]
+  },
+  "leetcode": {
+    "prefix": "",
+    "description": "a file to init a leetcode file",
+    "body": [
+      "#include <bits/stdc++.h>",
+      "",
+      "using namespace std;",
+      "",
+      "int main() {",
+      "  Solution s;",
+      "  cout << \"\" << endl;",
+      "  return 0;",
+      "}",
+      ""
+    ],
+    "isFileTemplate": true,
+    "scope": "cpp"
+  }
+}
