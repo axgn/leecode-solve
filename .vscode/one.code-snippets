@@ -36,13 +36,13 @@
     "prefix": "",
     "description": "a file to init a leetcode file",
     "body": [
-      "#include <bits/stdc++.h>",
+      "#include <iostream.h>",
       "",
       "using namespace std;",
       "",
       "int main() {",
       "  Solution s;",
-      "  cout << \"\" << endl;",
+      "  cout << \"\" << \\n",
       "  return 0;",
       "}",
       ""
