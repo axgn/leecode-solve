@@ -13,8 +13,8 @@
       "        left(nullptr), right(nullptr) {}",
       "  TreeNode(int x, TreeNode *left, TreeNode *right)",
       "      : val(x), left(left), right(right) {}",
-      "};"
-    ]
+      "};",
+    ],
   },
   "leetcode-print-three-dim": {
     "prefix": "lc-p3",
@@ -27,8 +27,8 @@
       "    cout << \"\\n\";",
       "  }",
       "  cout << \"\\n\";",
-      "}"
-    ]
+      "}",
+    ],
   },
   "leetcode-print-two-dim": {
     "prefix": "lc-p2",
@@ -38,8 +38,8 @@
       "for (auto &v : vv) {",
       "  ranges::copy(v, ostream_iterator<${0:int}>(cout, \" \"));",
       "  cout << \"\\n\";",
-      "}"
-    ]
+      "}",
+    ],
   },
   "leetcode-print-one-dim": {
     "prefix": "lc-p1",
@@ -47,8 +47,8 @@
     "body": [
       "vector<${0:int}> v = {${1}};",
       "ranges::copy(v, ostream_iterator<${0:int}>(cout, \" \"));",
-      "cout << '\\n';"
-    ]
+      "cout << '\\n';",
+    ],
   },
   "leetcode": {
     "prefix": "",
@@ -58,6 +58,7 @@
       "#include <iterator>",
       "#include <algorithm>",
       "#include <vector>",
+      "",
       "using namespace std;",
       "",
       "int main() {",
@@ -65,22 +66,18 @@
       "  cout << \"\" << \"\\n\";",
       "  return 0;",
       "}",
-      ""
+      "",
     ],
     "isFileTemplate": true,
-    "scope": "cpp"
+    "scope": "cpp",
   },
   // TODO: 将[]换为{}合成一步正则
-  "[to{":{
+  "[to{": {
     "prefix": "to-{",
-    "body": [
-      "${TM_SELECTED_TEXT/\\[/{/g}",
-    ]
+    "body": ["${TM_SELECTED_TEXT/\\[/{/g}"],
   },
-  "]to}":{
+  "]to}": {
     "prefix": "to-}",
-    "body": [
-      "${TM_SELECTED_TEXT/\\]/}/g}",
-    ]
-  }
+    "body": ["${TM_SELECTED_TEXT/\\]/}/g}"],
+  },
 }

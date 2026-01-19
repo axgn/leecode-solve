@@ -10,7 +10,8 @@ Diagnostics:
   ClangTidy: 
     Add: [ "performance-*"]
     Remove: ["clang-analyzer-*"]
-
+  Suppress:
+    - unused-includes
 InlayHints:
   Enabled: true 
   ParameterNames: true
