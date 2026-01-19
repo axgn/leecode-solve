@@ -11,26 +11,23 @@ public:
     int i;
     int j;
   };
-  vector<int> spiralOrder(vector<vector<int>> &matrix) {
-
-    vector<int> result;
-    vector<vector<int>> is_arrived(matrix.size(),
-                                   vector<int>(matrix[0].size(), 0));
+  vector<vector<int>> generateMatrix(int n) {
+    vector<vector<int>> result(n, vector<int>(n));
+    int value = 0;
     int i = 0, j = 0;
-    result.push_back(matrix[i][j]);
-    is_arrived[i][j] = 1;
+    result[i][j] = ++value;
     ACTION a = {.i = 0, .j = 1};
     while (true) {
-      if (check_end(is_arrived, a, i, j)) {
+      if (check_end(result, a, i, j)) {
         change_direct(a);
-        if (check_end(is_arrived, a, i, j)) {
+        if (check_end(result, a, i, j)) {
           break;
         }
       }
       i += a.i, j += a.j;
-      is_arrived[i][j] = 1;
-      result.push_back(matrix[i][j]);
+      result[i][j] = ++value;
     }
+
     return result;
   }
 
@@ -53,22 +50,22 @@ public:
         next_j >= (int)is_arrived[0].size()) {
       return true;
     }
-    if (is_arrived[next_i][next_j] == 1) {
+    if (is_arrived[next_i][next_j] != 0) {
       return true;
     }
     return false;
-  }
+  };
 };
 
 int main() {
   Solution s;
-  vector<vector<int>> vv = {{1, 2, 3, 4}, {10, 5, 6, 11}, {7, 8, 9, 12}};
+  vector<vector<int>> vv = s.generateMatrix(3);
   for (auto &v : vv) {
     ranges::copy(v, ostream_iterator<int>(cout, " "));
     cout << "\n";
   }
   cout << "" << "\n";
-  vector<int> v = s.spiralOrder(vv);
-  ranges::copy(v, ostream_iterator<int>(cout, " "));
+  cout << "one" << endl;
+  cout << "one" << endl;
   return 0;
 }

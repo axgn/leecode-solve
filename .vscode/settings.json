@@ -1,4 +1,5 @@
 {
   "cSpell.words": ["ABCCED"],
-  "cSpell.enabled": false
+  "cSpell.enabled": false,
+  "clangd.path": "clangd"
 }
