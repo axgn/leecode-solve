@@ -3,7 +3,7 @@
 
 CompileFlags: # 编译标志部分
   Add:
-    ["-Wall" ,"-Wextra", "-std=c++20","-stdlib=libc++"]
+    ["-Wall" ,"-Wextra", "-std=c++20","-stdlib=libc++","-fsanitize=address,undefined"]
   Remove: ["-Werror"]
   Compiler: clang++ 
 Diagnostics:
