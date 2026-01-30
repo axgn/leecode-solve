@@ -8,9 +8,22 @@ using namespace std;
 class Solution {
 public:
   int minPathSum(vector<vector<int>> &grid) {
-    vector<vector<int>> dp(grid.size(), vector<int>(grid[0].size()));
-    int result = 0;
-    return result;
+    int i_size = grid.size();
+    int j_size = grid[0].size();
+    vector<vector<int>> dp(i_size, vector<int>(j_size));
+    dp[0][0] = grid[0][0];
+    for (int i = 0; i < i_size; i++) {
+      dp[i][0] = dp[i - 1][0] + grid[i][0];
+    }
+    for (int j = 1; j < j_size; j++) {
+      dp[0][j] = dp[0][j - 1] + grid[0][j];
+    }
+    for (int i = 1; i < i_size; i++) {
+      for (int j = 1; j < j_size; j++) {
+        dp[i][j] = min(dp[i - 1][j], dp[i][j - 1]) + grid[i][j];
+      }
+    }
+    return dp[i_size - 1][j_size - 1];
   }
 };
 int main() {
