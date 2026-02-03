@@ -5,14 +5,15 @@
       "name": "(gdb) 启动",
       "type": "cppdbg",
       "request": "launch",
-      "preLaunchTask": "cpp_build",
+      "preLaunchTask": "cppbuild",
       "program": "${workspaceFolder}/out/${fileBasenameNoExtension}",
       "args": [],
+      "miDebuggerPath": "/usr/bin/lldb",
       "stopAtEntry": false,
       "cwd": "${fileDirname}",
       "environment": [],
       "externalConsole": false,
-      "MIMode": "gdb",
+      "MIMode": "lldb",
       "setupCommands": [
         {
           "description": "为 gdb 启用整齐打印",
@@ -33,6 +34,9 @@
       "name": "Debug",
       "program": "${workspaceFolder}/out/${fileBasenameNoExtension}",
       "args": [],
+      "env": {
+        "ASAN_OPTIONS" : "detect_leaks=0",
+      },
       "cwd": "${workspaceFolder}",
       "expressions": "simple"
     }
