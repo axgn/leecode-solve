@@ -71,7 +71,10 @@ public:
 int main() {
   Solution s;
   vector<int> v = {3, 3, 5, 0, 0, 3, 1, 4};
+  vector vv = {"123", "456", "789"};
   ranges::copy(v, ostream_iterator<int>(cout, " "));
+  cout << '\n';
+  ranges::copy(vv, ostream_iterator<std::string>(cout, " "));
   cout << '\n';
   int result = s.maxProfit(v);
   cout << result << "\n";
