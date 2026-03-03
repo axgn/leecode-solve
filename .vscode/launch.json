@@ -35,7 +35,7 @@
       "program": "${workspaceFolder}/out/${fileBasenameNoExtension}",
       "args": [],
       "env": {
-        "ASAN_OPTIONS" : "detect_leaks=0",
+        "ASAN_OPTIONS": "detect_leaks=0"
       },
       "cwd": "${workspaceFolder}",
       "expressions": "simple"
