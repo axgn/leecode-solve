@@ -2,6 +2,27 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "type": "java",
+      "name": "one",
+      "request": "launch",
+      "mainClass": "leetcodejava.one",
+      "projectName": "leetcode_3a226fa5"
+    },
+    {
+      "type": "java",
+      "name": "one",
+      "request": "launch",
+      "mainClass": "one",
+      "projectName": "leetcode_3a226fa5"
+    },
+    {
+      "type": "java",
+      "name": "App",
+      "request": "launch",
+      "mainClass": "App",
+      "projectName": "leetcode_3a226fa5"
+    },
+    {
       "name": "(gdb) 启动",
       "type": "cppdbg",
       "request": "launch",
