@@ -26,6 +26,19 @@
         "cwd": "${fileDirname}"
       },
       "problemMatcher": []
+    },
+    {
+      "label": "go_build",
+      "type": "shell",
+      "command": "go run ${file}",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "options": {
+        "cwd": "${fileDirname}"
+      },
+      "problemMatcher": []
     }
   ]
 }
