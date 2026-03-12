@@ -5,20 +5,6 @@
       "type": "java",
       "name": "one",
       "request": "launch",
-      "mainClass": "leetcode_java.one",
-      "projectName": "leetcode_3a226fa5"
-    },
-    {
-      "type": "java",
-      "name": "one",
-      "request": "launch",
-      "mainClass": "leetcodejava.one",
-      "projectName": "leetcode_3a226fa5"
-    },
-    {
-      "type": "java",
-      "name": "one",
-      "request": "launch",
       "mainClass": "one",
       "projectName": "leetcode_3a226fa5"
     },
