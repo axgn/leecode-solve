@@ -27,19 +27,15 @@ func getHappyString(n int, k int) string {
 	k = k - 1
 	str := make([]byte, 0, n)
 	for ; cnt > 0; cnt-- {
-		if k > 0 {
-			var tmp int
-			if cnt > 1 {
-				tmp = k % 2
-				k /= 2
-			} else {
-				tmp = k % 3
-				k /= 3
-			}
-			str = append(str, byte(tmp))
+		var tmp int
+		if cnt > 1 {
+			tmp = k % 2
+			k /= 2
 		} else {
-			str = append(str, byte(0))
+			tmp = k % 3
+			k /= 3
 		}
+		str = append(str, byte(tmp))
 	}
 	if k > 0 {
 		return ""
@@ -49,5 +45,5 @@ func getHappyString(n int, k int) string {
 }
 
 func main() {
-	fmt.Println(getHappyString(10, 100))
+	fmt.Println(getHappyString(10, 100)) //abacbabacb
 }
