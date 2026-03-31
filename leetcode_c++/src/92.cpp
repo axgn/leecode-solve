@@ -8,9 +8,9 @@ class Solution {
 public:
   ListNode *reverseBetween(ListNode *head, int left, int right) {
     int cnt = 0;
-    ListNode *temp = head;
     ListNode *headNode = new ListNode(-1, head);
     ListNode *tailNode = new ListNode(-1, nullptr);
+    ListNode *temp = headNode;
     ListNode *begin = nullptr, *end = nullptr;
     while (temp->next != nullptr) {
       if (cnt == right) {
@@ -20,9 +20,11 @@ public:
       if (cnt == left) {
         begin = temp;
       }
-
       temp = temp->next;
     }
+    temp->next = tailNode;
+
+    
     return head;
   }
 };
