@@ -5,25 +5,38 @@
 #include <vector>
 
 class Solution {
+  void reverseLinkedList(ListNode *head) {
+    ListNode *cur = head;
+    ListNode *pre = nullptr;
+    while (cur != nullptr) {
+      ListNode *next = cur->next;
+      cur->next = pre;
+      pre = cur;
+      cur = next;
+    }
+  }
+
 public:
   ListNode *reverseBetween(ListNode *head, int left, int right) {
-    int cnt = 0;
-    ListNode *temp = head;
-    ListNode *headNode = new ListNode(-1, head);
-    ListNode *tailNode = new ListNode(-1, nullptr);
-    ListNode *begin = nullptr, *end = nullptr;
-    while (temp->next != nullptr) {
-      if (cnt == right) {
-        end = temp;
-      }
-      cnt++;
-      if (cnt == left) {
-        begin = temp;
-      }
-
-      temp = temp->next;
+    ListNode *dummyNode = new ListNode(-1, head);
+    ListNode *pre = dummyNode;
+    for (int i = 0; i < left - 1; i++) {
+      pre = pre->next;
     }
-    return head;
+    ListNode *rightnode = pre;
+    for (int i = 0; i < right - left + 1; i++) {
+      rightnode = rightnode->next;
+    }
+    ListNode *temp = rightnode->next;
+    ListNode *leftnode = pre->next;
+
+    rightnode->next = nullptr;
+    pre->next = nullptr;
+    reverseLinkedList(leftnode);
+
+    leftnode->next = temp;
+    pre->next = rightnode;
+    return dummyNode->next;
   }
 };
 
