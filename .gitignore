@@ -1,3 +1,6 @@
 out/*
 .cache
 target
+bin
+obj
+

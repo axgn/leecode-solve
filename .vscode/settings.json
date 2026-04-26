@@ -2,4 +2,5 @@
   "cSpell.words": ["ABCCED"],
   "cSpell.enabled": false,
   "clangd.path": "clangd",
+  "dotnet.defaultSolution": "leetcode.sln"
 }

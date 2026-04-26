@@ -1,6 +1,7 @@
 {
   "leetcode-tree-node-statement": {
     "prefix": "lc-tn",
+    "scope": "cpp",
     "description": "",
     "body": [
       "struct TreeNode {",
@@ -18,6 +19,7 @@
   },
   "leetcode-print-three-dim": {
     "prefix": "lc-p3",
+    "scope": "cpp",
     "description": "",
     "body": [
       "vector<vector<vector<${0:int}>>> vvv = {{{${1}}}};",
@@ -32,6 +34,7 @@
   },
   "leetcode-print-two-dim": {
     "prefix": "lc-p2",
+    "scope": "cpp",
     "description": "",
     "body": [
       "vector<vector<${0:int}>> vv = {{${1}},{}};",
@@ -43,6 +46,7 @@
   },
   "leetcode-print-one-dim": {
     "prefix": "lc-p1",
+    "scope": "cpp",
     "description": "",
     "body": [
       "vector<${0:int}> v = {${1}};",
