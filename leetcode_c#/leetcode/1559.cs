@@ -1,10 +1,11 @@
-
+Solution s = new Solution();
+s.ContainsCycle([['a', 'a', 'a', 'a'], ['a', 'b', 'b', 'a'], ['a', 'b', 'b', 'a'], ['a', 'a', 'a', 'a']]);
 
 public class Solution
 {
   public bool ContainsCycle(char[][] grid)
   {
-    
+
     int m = grid.Length;
     int n = grid[0].Length;
     bool[][] visited = new bool[m][];
@@ -19,7 +20,7 @@ public class Solution
     {
       foreach (var kv in directions)
       {
-        
+
         if (kv.Key != last_direction)
         {
           int n_px = x + kv.Value.Item1;
@@ -28,8 +29,8 @@ public class Solution
           {
             if (!visited[n_px][n_py])
             {
-              dfs(n_px, n_py, (kv.Key + 2) % 4);
               visited[n_px][n_py] = true;
+              dfs(n_px, n_py, (kv.Key + 2) % 4);
             }
             else
             {
