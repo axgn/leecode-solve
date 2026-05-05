@@ -7,11 +7,12 @@ public class Solution
     for (int i = 0; i < m; i++)
     {
       dp[m] = new int[n][];
-      for (int i = 0; i < length; i++)
+      for (int j = 0; j < n; j++)
       {
-        
+        dp[m][n] = new int[k];
       }
     }
+    
     return 0;
   }
 }
