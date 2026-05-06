@@ -9,7 +9,7 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="3742.cs" />
+    <Compile Include="1861.cs" />
     <Compile Include="Unionfind.cs" />
   </ItemGroup>
 
