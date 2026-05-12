@@ -1,3 +1,6 @@
+var s = new Solution();
+Console.WriteLine(s.RotateTheBox([['#', '.', '#']]));
+
 public class Solution
 {
   public char[][] RotateTheBox(char[][] boxGrid)
@@ -22,9 +25,21 @@ public class Solution
         {
           cnt++;
         }
-        else if (boxGrid[i][j] == '*')
+        if (boxGrid[i][j] == '*')
         {
-          res[j][m - i] = '*';
+          res[j][m - 1 - i] = '*';
+          for (int k = 1; k <= cnt; k++)
+          {
+            res[j - k][m - 1 - i] = '#';
+          }
+          cnt = 0;
+        }
+        else if (j == n - 1)
+        {
+          for (int k = 0; k < cnt; k++)
+          {
+            res[j - k][m - 1 - i] = '#';
+          }
           cnt = 0;
         }
       }
