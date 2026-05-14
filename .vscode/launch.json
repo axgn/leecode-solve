@@ -52,7 +52,7 @@
         "ASAN_OPTIONS": "detect_leaks=0"
       },
       "cwd": "${workspaceFolder}",
-      "expressions": "simple"
+      // "expressions": "simple"
     },
     {
       "name": "go Launch file",

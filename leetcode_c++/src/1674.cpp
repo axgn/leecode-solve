@@ -1,14 +1,18 @@
 class Solution {
 public:
     int minMoves(vector<int>& nums, int limit) {
-        unordered_map<int,int> sum_cnt;
+        vector<int> result(2 * limit + 1);
         int n = nums.size();
         for (size_t i = 0; i < n / 2; i++)
         {
-          int sum = nums[i] + nums[n - 1 - i];
-          sum_cnt[sum]++;
+            int sum = nums[i] + nums[n - 1 - i];
+            int min_v = min(x,y);
+            int max_v = max(x,y);
+            result[1] += 2;
+            result[min_v] -= 1;
+            result[max_v + limit - 1] += 1;
+            result[]
         }
-        auto max_pos = std::max_element(std::begin(sum_cnt), std::end(sum_cnt),[](auto& a,auto&b){return a.second < b.second;});
         return n / 2 - (*max_pos).second;
     }
 };
