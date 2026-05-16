@@ -5,76 +5,57 @@
 
 using namespace std;
 
+const int MX = 1'000'001;
+vector<int> prime_factors[MX];
+
+int init = [] {
+    for (int i = 2; i < MX; i++) {
+        if (prime_factors[i].empty()) {
+            for (int j = i; j < MX; j += i) {
+                prime_factors[j].push_back(i);
+            }
+        }
+    }
+    return 0;
+}();
+
 class Solution {
-    static constexpr int MAX = 1'000'001;
-    vector<vector<int>> table{MAX};
-    vector<vector<int>> table_v_pos{MAX};
-    void initTable()
-    {
-        for (size_t i = 2; i < MAX; i++)
-        {
-            if (table[i].size() == 0)
-            {
-                for (size_t j = i; j < MAX; j += i)
-                {
-                    table[j].push_back(i);
-                }
-            }
-        }
-    }
-
-    void initTableVPos(vector<int>& nums)
-    {
-        for (size_t i = 0; i < nums.size(); i++)
-        {
-            int v = nums[i];
-            for (size_t j = 0; j < table[v].size(); j++)
-            {
-                table_v_pos[table[v][j]].push_back(i);
-            }
-        }
-    }
-
 public:
     int minJumps(vector<int>& nums) {
-        initTable();
-        initTableVPos(nums);
         int n = nums.size();
-        vector<int> vis(n, 0);
-        vis[0] = 1;
-        int i = 0;
-        queue<int> q(deque<int>(1,0));
-        int cnt = 0;
-        while (i != n - 1)
-        {
+        unordered_map<int, vector<int>> groups;
+        for (int i = 0; i < n; i++) {
+            for (int p : prime_factors[nums[i]]) {
+                groups[p].push_back(i);
+            }
+        }
+
+        vector<int8_t> vis(n);
+        vis[0] = true;
+        vector<int> q = {0};
+        int ans = 0;
+        for (; ; ans++) {
             auto tmp = q;
-            q = queue<int>();
-            while (tmp.size() != 0 && i != n - 1)
-            {
-                i = tmp.front();
-                tmp.pop();
-                if (vis[i + 1] == 0)
-                {
-                    q.push(i + 1);
-                    vis[i + 1] = 1;
+            q.clear();
+            for (int i : tmp) {
+                if (i == n - 1) {
+                    return ans;
                 }
-                if (i > 0 && vis[i - 1] == 0)
-                {
-                    q.push(i - 1);
-                    vis[i - 1] = 1;
+                auto& idx = groups[nums[i]];
+                idx.push_back(i + 1);
+                if (i > 0) {
+                    idx.push_back(i - 1);
                 }
-                for (size_t j = 0; j < table_v_pos[nums[i]].size(); j++)
-                {
-                    if (vis[table_v_pos[nums[i]][j]] == 0)
-                    {
-                        q.push(table_v_pos[nums[i]][j]);
-                        vis[table_v_pos[nums[i]][j]] = 1;
+                for (int j : idx) {
+                    if (!vis[j]) {
+                        vis[j] = true;
+                        q.push_back(j);
                     }
                 }
+                idx.clear();
             }
-            cnt++;
         }
-        return cnt;
+        return ans;
     }
 };
 
