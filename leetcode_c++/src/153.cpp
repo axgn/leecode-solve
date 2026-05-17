@@ -8,19 +8,12 @@ using namespace std;
 class Solution {
 public:
   int findMin(vector<int> &nums) {
-    int left = 0;
-    int right = nums.size() - 1;
-    int l_v = nums[left], r_v = nums[right];
-    while (left < right) {
-      int mid = (left + right) / 2;
-      if (nums[mid] > l_v) {
-        left = mid;
-      }
-      if (nums[mid] < r_v) {
-        right = mid;
-      }
+    int left = -1, right = nums.size() - 1;
+    while (left + 1 < right) {
+      int mid = left + (right - left) / 2;
+      (nums[mid] < nums.back() ? right : left) = mid;
     }
-    return nums[left];
+    return nums[right];
   }
 };
 
