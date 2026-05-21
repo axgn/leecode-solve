@@ -20,7 +20,7 @@ public:
       for (auto kv : cnt) {
         sum += abs(kv.second);
       }
-      res[i] = 2 * (i + 1) - sum;
+      res[i] = (2 * (i + 1) - sum) / 2;
     }
     return res;
   }
