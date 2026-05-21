@@ -18,12 +18,15 @@ public:
     }
     vector<int8_t> vis(n);
     vector<int> travel{0};
-    int cnt = 0;
+    int cnt = -1;
     while (true) {
       auto temp = travel;
       travel.clear();
       cnt++;
       for (auto i : temp) {
+        if (i == n - 1) {
+          return cnt;
+        }
         val_pos[arr[i]].push_back(i + 1);
         val_pos[arr[i]].push_back(i - 1);
         for (auto pos : val_pos[arr[i]]) {
@@ -35,7 +38,6 @@ public:
         val_pos[arr[i]].clear();
       }
     }
-    return cnt;
   }
 };
 
