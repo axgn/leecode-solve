@@ -21,9 +21,9 @@ public:
     }
     for (auto &v : arr2) {
       string temp = to_string(v);
-      for (size_t i = 1; i <= temp.length(); i++) {
+      for (size_t i = ans; i <= temp.length(); i++) {
         if (set_s.contains(temp.substr(0, i))) {
-          ans = max((int)i, ans);
+          ans = i;
         }
       }
     }
