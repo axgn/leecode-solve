@@ -9,20 +9,23 @@ using namespace std;
 
 class Solution {
 public:
-  ListNode *findmidnode(ListNode *head) {
-    ListNode *slow = head, *fast = head;
+  ListNode *findMidNode(ListNode *head) {
+    ListNode *slow = head, *fast = head->next->next;
     while (fast && fast->next) {
       slow = slow->next;
       fast = fast->next->next;
     }
     return slow;
   }
-  void deletenode(ListNode *head) {
-    
-  }
+  void deleteNextNode(ListNode *head) { head->next = head->next->next; }
 
   ListNode *deleteMiddle(ListNode *head) {
-
+    if (!head->next) {
+      return nullptr;
+    }
+    ListNode *mid = findMidNode(head);
+    deleteNextNode(mid);
+    return head;
   }
 };
 
