@@ -15,26 +15,15 @@ public:
     unsigned long long cnt = 0;
     constexpr uint64_t MASK = 0xffffLL;
     int result = 0;
-    while (slow <= n - 1) {
-      while (!(cnt & (MASK << 16)) || !(cnt & (MASK << 32)) ||
-             !(cnt & (MASK))) {
-        if (fast > n - 1) {
-          break;
-        }
-        if (s[fast] == 'a') {
-          cnt++;
-        } else if (s[fast] == 'b') {
-          cnt = cnt + (1LL << 16);
-        } else if (s[fast] == 'c') {
-          cnt = cnt + (1LL << 32);
-        }
-        fast++;
+    while (fast <= n - 1) {
+      if (s[fast] == 'a') {
+        cnt++;
+      } else if (s[fast] == 'b') {
+        cnt = cnt + (1LL << 16);
+      } else if (s[fast] == 'c') {
+        cnt = cnt + (1LL << 32);
       }
-      result += n - fast + 1;
       while ((cnt & (MASK << 16)) && (cnt & (MASK << 32)) && (cnt & (MASK))) {
-        if (slow > n - 1) {
-          break;
-        }
         if (s[slow] == 'a') {
           cnt--;
         } else if (s[slow] == 'b') {
@@ -44,9 +33,8 @@ public:
         }
         slow++;
       }
-      if (fast > n - 1) {
-        break;
-      }
+      result += slow;
+      fast++;
     }
     return result;
   }
@@ -54,7 +42,7 @@ public:
 
 int main() {
   Solution s;
-  string s1 = "abcabc";
+  string s1 = "bcaaa";
   cout << s.numberOfSubstrings(s1) << "\n";
   return 0;
 }
