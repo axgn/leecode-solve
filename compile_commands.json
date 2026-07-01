@@ -1,0 +1,7 @@
+[
+  {
+    "directory": "/home/aaa1/code/c++/leetcode/leetcode_c++/src",
+    "file": "/home/aaa1/code/c++/leetcode/leetcode_c++/src/1967.cpp",
+    "command": "/usr/bin/clang++ -std=c++23 -stdlib=libc++ -Wall -Wextra -I../include -fsanitize=address,undefined -c /home/aaa1/code/c++/leetcode/leetcode_c++/src/1967.cpp"
+  }
+]
