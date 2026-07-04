@@ -12,6 +12,7 @@ using namespace std;
 class Solution {
 public:
   int maximumSafenessFactor(vector<vector<int>> &grid) {
+    pair<int, int> direction[4] = {{0, 1}, {0, -1}, {1, 0}, {-1, 0}};
     int n = grid.size();
     int m = grid[0].size();
     vector<pair<int, int>> points;
@@ -29,7 +30,6 @@ public:
       for (auto &v : points) {
         int i = v.first;
         int j = v.second;
-        pair<int, int> direction[4] = {{0, 1}, {0, -1}, {1, 0}, {-1, 0}};
         for (int k = 0; k < 4; k++) {
           int n_i = i + direction[k].first;
           int n_j = j + direction[k].second;
@@ -48,15 +48,26 @@ public:
     for (int i = 0; i < n * m; i++) {
       parent[i] = i;
     }
-    auto find = [&](auto &&find, int x) {
+    auto find = [&](this auto &&find, int x) {
       if (parent[x] == x) {
         return x;
       }
       return parent[x] = find(parent[x]);
     };
     for (auto &[i, j] : views::reverse(all)) {
-      
+      for (auto &[xf, yf] : direction) {
+        int x = i + xf;
+        int y = j + yf;
+        if (x >= 0 && x <= n - 1 && y >= 0 && y <= n - 1 &&
+            grid[x][y] >= grid[i][j]) {
+          parent[find(id(x, y))] = find(id(i, j));
+        }
+      }
+      if (find(0) == find(m * n - 1)) {
+        return grid[i][j] - 1;
+      }
     }
+    return 0;
   }
 };
 
