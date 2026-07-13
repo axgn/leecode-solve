@@ -12,7 +12,7 @@ public:
     sort(temp.begin(), temp.end());
     temp.erase(unique(temp.begin(), temp.end()), temp.end());
     unordered_map<int, int> pos;
-    for (int i = 0; i < temp.size(); i++) {
+    for (int i = 0; i < (int)temp.size(); i++) {
       pos[temp[i]] = i;
     }
     for (auto &i : arr) {
