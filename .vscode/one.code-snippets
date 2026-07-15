@@ -78,7 +78,7 @@
   "lambda" : {
     "prefix": "lambda",
     "description": "lambda expression",
-    "body": "[${0:&}](${1}) {${2}}${3}",
+    "body": "[${0:&}](${1})${2}{${3}}${4}",
     "scope": "cpp"
   },
   // TODO: 将[]换为{}合成一步正则
