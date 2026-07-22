@@ -22,10 +22,10 @@
     "scope": "cpp",
     "description": "",
     "body": [
-      "vector<vector<vector<${0:int}>>> vvv = {{{${1}}}};",
+      "vector<vector<vector<${1:int}>>> vvv = {{{${0}}}};",
       "for (auto &vv : vvv) {",
       "  for (auto &v : vv) {",
-      "    ranges::copy(v, ostream_iterator<${0:int}>(cout, \" \"));",
+      "    ranges::copy(v, ostream_iterator<${1:int}>(cout, \" \"));",
       "    cout << \"\\n\";",
       "  }",
       "  cout << \"\\n\";",
@@ -37,9 +37,9 @@
     "scope": "cpp",
     "description": "",
     "body": [
-      "vector<vector<${0:int}>> vv = {{${1}},{}};",
+      "vector<vector<${1:int}>> vv = {{${0}},{}};",
       "for (auto &v : vv) {",
-      "  ranges::copy(v, ostream_iterator<${0:int}>(cout, \" \"));",
+      "  ranges::copy(v, ostream_iterator<${1:int}>(cout, \" \"));",
       "  cout << \"\\n\";",
       "}",
     ],
@@ -49,8 +49,8 @@
     "scope": "cpp",
     "description": "",
     "body": [
-      "vector<${0:int}> v = {${1}};",
-      "ranges::copy(v, ostream_iterator<${0:int}>(cout, \" \"));",
+      "vector<${1:int}> v = {${0}};",
+      "ranges::copy(v, ostream_iterator<${1:int}>(cout, \" \"));",
       "cout << '\\n';",
     ],
   },
@@ -75,11 +75,11 @@
     "isFileTemplate": true,
     "scope": "cpp",
   },
-  "lambda" : {
+  "lambda": {
     "prefix": "lambda",
     "description": "lambda expression",
-    "body": "[${0:&}](${1})${2}{${3}}${4}",
-    "scope": "cpp"
+    "body": "[${1:&}](${2})${3}{${4}}${0}",
+    "scope": "cpp",
   },
   // TODO: 将[]换为{}合成一步正则
   "[to{": {
