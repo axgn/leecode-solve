@@ -1,5 +1,14 @@
 {
   "version": "0.2.0",
+  "compounds": [
+    {
+      "name": "Compound",
+      "configurations": [
+        "Debug",
+        "Debug1"
+      ]
+    }
+  ],
   "configurations": [
     {
       "type": "java",
@@ -51,7 +60,19 @@
       "env": {
         "ASAN_OPTIONS": "detect_leaks=0"
       },
-      "cwd": "${workspaceFolder}",
+      "cwd": "${workspaceFolder}"
+      // "expressions": "simple"
+    },{
+      "type": "lldb",
+      "request": "launch",
+      "preLaunchTask": "cppbuild",
+      "name": "Debug1",
+      "program": "${workspaceFolder}/out/3499",
+      "args": [],
+      "env": {
+        "ASAN_OPTIONS": "detect_leaks=0"
+      },
+      "cwd": "${workspaceFolder}"
       // "expressions": "simple"
     },
     {
@@ -65,8 +86,7 @@
       "name": "C#: Debug Active File",
       "type": "dotnet",
       "request": "launch",
-      "projectPath": "${file}",
-      
+      "projectPath": "${file}"
     }
   ]
 }
