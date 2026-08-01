@@ -6,25 +6,28 @@
 #include <vector>
 
 using namespace std;
-class Solution {
+class Solution1 {
 public:
   ListNode *insertionSortList(ListNode *head) {
-    if (!head->next) {
+    if (!head || !head->next) {
       return head;
     }
     ListNode *dummy = new ListNode(INT_MIN, head);
-    ListNode *p = dummy;
-    while (p) {
-      ListNode *temp = deletenode(p);
-      int val = temp->val;
-      ListNode *q = dummy;
-      while (q != p && q->next->val < val) {
-        q = q->next;
+    ListNode *lastSorted = head;
+    ListNode *curr = head->next;
+    while (curr != nullptr) {
+      if (lastSorted->val <= curr->val) {
+        lastSorted = lastSorted->next;
+      } else {
+        ListNode *prev = dummy;
+        while (prev->next->val <= curr->val) {
+          prev = prev->next;
+        }
+        // 必须先删除再插入
+        deletenext(lastSorted);
+        insertnode(prev, curr);
       }
-      insertnode(q, temp);
-      if (q == p) {
-        p = p->next;
-      }
+      curr = lastSorted->next;
     }
     return dummy->next;
   }
@@ -33,10 +36,37 @@ public:
     node1->next = node2;
     node2->next = temp;
   }
-  ListNode *deletenode(ListNode *node) {
+  ListNode *deletenext(ListNode *node) {
     ListNode *temp = node->next;
     node->next = node->next->next;
     return temp;
+  }
+};
+class Solution {
+public:
+  ListNode *insertionSortList(ListNode *head) {
+    if (head == nullptr) {
+      return head;
+    }
+    ListNode *dummyHead = new ListNode(0);
+    dummyHead->next = head;
+    ListNode *lastSorted = head;
+    ListNode *curr = head->next;
+    while (curr != nullptr) {
+      if (lastSorted->val <= curr->val) {
+        lastSorted = lastSorted->next;
+      } else {
+        ListNode *prev = dummyHead;
+        while (prev->next->val <= curr->val) {
+          prev = prev->next;
+        }
+        lastSorted->next = curr->next;
+        curr->next = prev->next;
+        prev->next = curr;
+      }
+      curr = lastSorted->next;
+    }
+    return dummyHead->next;
   }
 };
 int main() {
