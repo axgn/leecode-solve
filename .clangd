@@ -9,7 +9,7 @@ CompileFlags: # 编译标志部分
       "-std=c++23",
       "-stdlib=libc++",
       "-fsanitize=address,undefined",
-      "-I../include",
+      "-Ileetcode_c++/include",
     ]
   Remove: ["-Werror"]
   Compiler: clang++
