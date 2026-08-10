@@ -10,16 +10,16 @@ using namespace std;
 class Solution {
 public:
   vector<int> remainingMethods(int n, int k, vector<vector<int>> &invocations) {
-    vector<unordered_set<int>> callIn(n);
-    for (int i = 0; i < invocations.size(); i++) {
+    vector<unordered_set<int>> callOut(n);
+    for (int i = 0; i < (int)invocations.size(); i++) {
       int start = invocations[i].front();
       int end = invocations[i].back();
-      callIn[start].insert(end);
+      callOut[start].insert(end);
     }
     vector<uint8_t> vis(n);
-    function<void(int)> dfs = [&](int k) -> void {
-      vis[k] = true;
-      for (auto &val : callIn[k]) {
+    function<void(int)> dfs = [&](int node) -> void {
+      vis[node] = true;
+      for (auto &val : callOut[node]) {
         if (vis[val]) {
           continue;
         }
@@ -27,24 +27,24 @@ public:
       }
     };
     dfs(k);
-    bool isremove = true;
+    bool canRemove = true;
     for (int i = 0; i < n; i++) {
       if (vis[i]) {
         continue;
       }
-      for (auto &val : callIn[i]) {
+      for (auto &val : callOut[i]) {
         if (vis[val]) {
-          isremove = false;
+          canRemove = false;
           break;
         }
       }
-      if (!isremove) {
+      if (!canRemove) {
         break;
       }
     }
     vector<int> res;
     for (int i = 0; i < n; i++) {
-      if (isremove) {
+      if (canRemove) {
         if (!vis[i]) {
           res.push_back(i);
         }
