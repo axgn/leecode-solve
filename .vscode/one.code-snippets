@@ -65,6 +65,8 @@
       "",
       "using namespace std;",
       "",
+      "${0}",
+      "",
       "int main() {",
       "  Solution s;",
       "  cout << \"\" << \"\\n\";",
