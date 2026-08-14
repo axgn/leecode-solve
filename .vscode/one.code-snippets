@@ -55,7 +55,7 @@
     ],
   },
   "leetcode": {
-    "prefix": "",
+    "prefix": "leetcode",
     "description": "a file to init a leetcode file",
     "body": [
       "#include <iostream>",
